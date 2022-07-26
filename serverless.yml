@@ -1,20 +1,19 @@
----
+org: duongd
+console: true
 service: serverless-react-boilerplate
 frameworkVersion: "3"
 useDotenv: true
-variablesResolutionMode: 20210326
 disabledDeprecations:
   - CLI_OPTIONS_SCHEMA # some Serverless plugins haven't been updated yet and generate warnings
 
 provider:
   name: aws
   runtime: nodejs12.x
-  region: ${opt:region, 'us-east-1'}
+  region: ${opt:region, 'ap-southeast-2'}
   stage: ${opt:stage, 'dev'}
   memorySize: 512
   timeout: 6
   logRetentionInDays: 7
-  lambdaHashingVersion: 20201221 # for upcoming Serverless v3
 
   apiGateway:
     shouldStartNameWithService: true # for upcoming Serverless v3
@@ -58,8 +57,7 @@ functions:
 
 custom:
   distBucketUrl:
-    us-east-1:
-      # us-east-1 uses a different URL format than the other regions
+    ap-southeast-2:
       Fn::Join:
         - ""
         - - https://s3.amazonaws.com/
